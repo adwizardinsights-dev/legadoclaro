@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 222 47% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 17%;
+    --primary: 222 47% 19%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 40 30% 94%;
+    --secondary-foreground: 222 47% 19%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 40 65% 54%;
+    --accent-foreground: 222 47% 17%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 47% 19%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  /* Wizard step connector line */
+  .step-connector {
+    @apply flex-1 h-0.5 bg-border mx-2 mt-5;
+  }
+  .step-connector.completed {
+    @apply bg-brand-navy;
+  }
+
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  /* Gradient hero */
+  .hero-gradient {
+    background: linear-gradient(135deg, #1B2A4A 0%, #253558 60%, #1B2A4A 100%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ──────────────────────────────────────────
+   Form primitives — used across wizard steps
+   ────────────────────────────────────────── */
+.form-label {
+  @apply block text-sm font-medium text-brand-navy mb-1.5;
+}
+
+.form-input {
+  @apply w-full border border-border rounded-lg px-3 py-2.5 text-sm
+         bg-white focus:outline-none focus:ring-2 focus:ring-brand-navy/20
+         focus:border-brand-navy transition-colors
+         disabled:opacity-50 disabled:bg-muted;
+}
+
+.form-error {
+  @apply text-destructive text-xs mt-1;
+}
